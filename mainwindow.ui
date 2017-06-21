@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="btnTest">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>90</y>
+      <width>231</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Test Button</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTest">
+    <property name="geometry">
+     <rect>
+      <x>345</x>
+      <y>170</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Hi!</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

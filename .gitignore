@@ -147,3 +147,5 @@ target_wrapper.*
 # QtCtreator CMake
 CMakeLists.txt.user*
 
+.idea/
+.DS_Store
