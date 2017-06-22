@@ -91,8 +91,8 @@
    <widget class="QLabel" name="lblHumidity">
     <property name="geometry">
      <rect>
-      <x>441</x>
-      <y>187</y>
+      <x>440</x>
+      <y>160</y>
       <width>341</width>
       <height>141</height>
      </rect>
@@ -107,7 +107,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Feuchtigkeit: --%</string>
+     <string>Feuchtigkeit: --,-%</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -161,6 +161,37 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblTime">
+    <property name="geometry">
+     <rect>
+      <x>342</x>
+      <y>-2</y>
+      <width>441</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Roboto</family>
+      <pointsize>100</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>00:00</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::AutoText</enum>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
     </property>
    </widget>
   </widget>

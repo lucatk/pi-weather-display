@@ -11,6 +11,7 @@ import mainwindow_auto
 import zmq
 import json
 import time
+from datetime import datetime
 
 class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
     def __init__(self):
@@ -83,6 +84,8 @@ def receive(form):
         mittel = float(sum) / len(datastore["mcp_smoke_voltage"])
         smokeLevel = (22000*3.3)/(float(mittel)/1023*3.3) - 22000
         form.lblSmokeLevel.setText("TGS2600: " + str(round(smokeLevel, 2)) + " Rs")
+
+        form.lblTime.setText(datetime.now().strftime("%H:%M"))
 
 def main():
     app = QApplication(sys.argv)
