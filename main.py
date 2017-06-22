@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
+import threading
+
 import PyQt5
 from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import *
@@ -22,23 +24,31 @@ class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
         bgPalette.setColor(self.centralWidget.backgroundRole(), QtCore.Qt.black)
         self.centralWidget.setPalette(bgPalette)
 
-def main():
-    app = QApplication(sys.argv)
-
-    form = MainWindow()
-    form.show()
+def receive(form):
 
     zmqContext = zmq.Context()
     socket = zmqContext.socket(zmq.REP)
     socket.bind("tcp://127.0.0.1:5555")
 
     while True:
-        data = json.loads(socket.recv_json())
+        msg = socket.recv_json()
+        data = json.loads(msg)
 
         form.lblTemperature.setText(str(round(data["dht_temperature"])) + "﻿°C")
         form.lblHumidity.setText("Feuchtigkeit".join([str(round(data["dht_humidity"])), "%"]))
 
-        socket.send("")
+        socket.send_string("")
+
+def main():
+    app = QApplication(sys.argv)
+
+    form = MainWindow()
+    form.show()
+
+    t = threading.Thread(target=receive, args=(form,))
+    t.daemon = True
+    t.start()
+    # t.join()
 
     sys.exit(app.exec_())
 
