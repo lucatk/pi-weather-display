@@ -76,7 +76,7 @@ def receive(form):
         lightLevel = ((1-(float(mittel)/1023))/0.6)*100
         if lightLevel > 100:
             lightLevel = 100
-        form.lblLightLevel.setText("Es ist " + str(round(lightLevel, 1)) + "% hell draußen.")
+        form.lblLightLevel.setText("Es ist " + str(round(lightLevel, 1)) + "% hell.")
 
         sum = 0
         for val in datastore["mcp_smoke_voltage"]:
