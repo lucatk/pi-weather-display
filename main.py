@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sys
 import PyQt5
 from PyQt5 import QtWidgets, QtCore
