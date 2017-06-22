@@ -6,6 +6,7 @@ from PyQt5.QtWidgets import *
 import mainwindow_auto
 
 import zmq
+import json
 import time
 
 class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
@@ -26,7 +27,17 @@ def main():
     form = MainWindow()
     form.show()
 
+    zmqContext = zmq.Context()
+    socket = zmqContext.socket(zmq.REP)
+    socket.bind("tcp://127.0.0.1:5555")
 
+    while True:
+        data = json.loads(socket.recv_json())
+
+        form.lblTemperature.setText(str(round(data["dht_temperature"])) + "﻿°C")
+        form.lblHumidity.setText("Feuchtigkeit".join([str(round(data["dht_humidity"])), "%"]))
+
+        socket.send("")
 
     sys.exit(app.exec_())
 
