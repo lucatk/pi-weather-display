@@ -60,23 +60,23 @@
    <widget class="QLabel" name="lblTemperature">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>349</y>
-      <width>421</width>
-      <height>141</height>
+      <x>210</x>
+      <y>329</y>
+      <width>571</width>
+      <height>161</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Roboto</family>
-      <pointsize>130</pointsize>
+      <pointsize>120</pointsize>
       <weight>75</weight>
       <bold>true</bold>
       <kerning>true</kerning>
      </font>
     </property>
     <property name="text">
-     <string>30 °C</string>
+     <string>--,- °C</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -92,7 +92,7 @@
     <property name="geometry">
      <rect>
       <x>441</x>
-      <y>207</y>
+      <y>195</y>
       <width>341</width>
       <height>141</height>
      </rect>
@@ -100,14 +100,14 @@
     <property name="font">
      <font>
       <family>Roboto</family>
-      <pointsize>30</pointsize>
+      <pointsize>28</pointsize>
       <weight>50</weight>
       <bold>false</bold>
       <kerning>true</kerning>
      </font>
     </property>
     <property name="text">
-     <string>Feuchtigkeit: 60%</string>
+     <string>Feuchtigkeit: --%</string>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -125,7 +125,7 @@
       <x>30</x>
       <y>30</y>
       <width>371</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
@@ -145,9 +145,9 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>60</y>
+      <y>64</y>
       <width>371</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
