@@ -20,7 +20,7 @@ class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
 
         bgPalette = self.centralWidget.palette()
         bgPalette.setColor(self.centralWidget.backgroundRole(), QtCore.Qt.black)
-        self.centralWidget().setPalette(bgPalette)
+        self.centralWidget.setPalette(bgPalette)
 
 def main():
     app = QApplication(sys.argv)
