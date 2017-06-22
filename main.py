@@ -1,6 +1,6 @@
 import sys
 import PyQt5
-from PyQt5 import QtWidgets, QtCore, Qt
+from PyQt5 import QtWidgets, QtCore
 from PyQt5.QtWidgets import *
 
 import mainwindow_auto
@@ -18,7 +18,7 @@ class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
         self.showFullScreen()
 
         bgPalette = self.centralWidget.palette()
-        bgPalette.setColor(self.centralWidget.backgroundRole(), Qt.black)
+        bgPalette.setColor(self.centralWidget.backgroundRole(), QtCore.Qt.black)
         self.centralWidget().setPalette(bgPalette)
 
 def main():
