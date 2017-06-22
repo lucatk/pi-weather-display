@@ -76,7 +76,7 @@
      </font>
     </property>
     <property name="text">
-     <string>--,- °C</string>
+     <string/>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -107,7 +107,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Feuchtigkeit: --,-%</string>
+     <string/>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
@@ -135,7 +135,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Es ist 50% hell.</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -157,7 +157,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Smoke level:</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -182,7 +182,7 @@
      </font>
     </property>
     <property name="text">
-     <string>00:00</string>
+     <string/>
     </property>
     <property name="textFormat">
      <enum>Qt::AutoText</enum>
