@@ -135,7 +135,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Es ist 50% hell draußen.</string>
+     <string>Es ist 50% hell.</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
@@ -167,7 +167,7 @@
     <property name="geometry">
      <rect>
       <x>342</x>
-      <y>-2</y>
+      <y>-9</y>
       <width>441</width>
       <height>161</height>
      </rect>
@@ -175,9 +175,9 @@
     <property name="font">
      <font>
       <family>Roboto</family>
-      <pointsize>100</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
+      <pointsize>90</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
       <kerning>true</kerning>
      </font>
     </property>
