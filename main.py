@@ -30,18 +30,57 @@ def receive(form):
     socket = zmqContext.socket(zmq.REP)
     socket.bind("tcp://127.0.0.1:5555")
 
+    datastore = {
+        "dht_temperature": [],
+        "dht_humidity": [],
+        "mcp_light_voltage": [],
+        "mcp_smoke_voltage": []
+    }
+
     while True:
         msg = socket.recv_json()
         data = json.loads(msg)
 
-        form.lblTemperature.setText(str(round(data["dht_temperature"], 1)).replace(".", ",") + "﻿°C")
-        form.lblHumidity.setText("Feuchtigkeit: " + str(round(data["dht_humidity"], 1)).replace(".", ",") + "%")
-        lightLevel = 10000/((3.3/(float(data["mcp_light_voltage"])/1023*3.3))-1)
-        form.lblLightLevel.setText("Es ist " + str(lightLevel) + "% hell draußen.")
-        smokeLevel = (22000*3.3)/(float(data["mcp_smoke_voltage"])/1023*3.3) - 22000
-        form.lblSmokeLevel.setText("Smoke level: " + str(smokeLevel))
+        datastore["dht_temperature"].insert(0, float(data["dht_temperature"]))
+        if len(datastore["dht_temperature"]) > 60:
+            datastore["dht_temperature"].pop()
+        datastore["dht_humidity"].insert(0, float(data["dht_humidity"]))
+        if len(datastore["dht_humidity"]) > 60:
+            datastore["dht_humidity"].pop()
+        datastore["mcp_light_voltage"].insert(0, float(data["mcp_light_voltage"]))
+        if len(datastore["mcp_light_voltage"]) > 10:
+            datastore["mcp_light_voltage"].pop()
+        datastore["mcp_smoke_voltage"].insert(0, float(data["mcp_smoke_voltage"]))
+        if len(datastore["mcp_smoke_voltage"]) > 60:
+            datastore["mcp_smoke_voltage"].pop()
 
         socket.send_string("")
+
+        sum = 0
+        for val in datastore["dht_temperature"]:
+            sum += val
+        mittel = float(sum) / len(datastore["dht_temperature"])
+        form.lblTemperature.setText(str(round(mittel, 1)).replace(".", ",") + "﻿°C")
+
+        sum = 0
+        for val in datastore["dht_humidity"]:
+            sum += val
+        mittel = float(sum) / len(datastore["dht_humidity"])
+        form.lblHumidity.setText("Feuchtigkeit: " + str(round(mittel, 1)).replace(".", ",") + "%")
+
+        sum = 0
+        for val in datastore["mcp_light_voltage"]:
+            sum += val
+        mittel = float(sum) / len(datastore["mcp_light_voltage"])
+        lightLevel = (100-(float(mittel)/1023))/85
+        form.lblLightLevel.setText("Es ist " + str(lightLevel) + "% hell draußen.")
+
+        sum = 0
+        for val in datastore["mcp_smoke_voltage"]:
+            sum += val
+        mittel = float(sum) / len(datastore["mcp_smoke_voltage"])
+        smokeLevel = (22000*3.3)/(float(mittel)/1023*3.3) - 22000
+        form.lblSmokeLevel.setText("Smoke level: " + str(smokeLevel))
 
 def main():
     app = QApplication(sys.argv)
