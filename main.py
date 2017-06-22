@@ -72,18 +72,21 @@ def receive(form):
         for val in datastore["mcp_light_voltage"]:
             sum += val
         mittel = float(sum) / len(datastore["mcp_light_voltage"])
-        lightLevel = (100-(float(mittel)/1023))/85
-        form.lblLightLevel.setText("Es ist " + str(lightLevel) + "% hell draußen.")
+        lightLevel = ((1-(float(mittel)/1023))/0.6)*100
+        if lightLevel > 100:
+            lightLevel = 100
+        form.lblLightLevel.setText("Es ist " + str(round(lightLevel, 1)) + "% hell draußen.")
 
         sum = 0
         for val in datastore["mcp_smoke_voltage"]:
             sum += val
         mittel = float(sum) / len(datastore["mcp_smoke_voltage"])
         smokeLevel = (22000*3.3)/(float(mittel)/1023*3.3) - 22000
-        form.lblSmokeLevel.setText("Smoke level: " + str(smokeLevel))
+        form.lblSmokeLevel.setText("TGS2600: " + str(round(smokeLevel, 2)) + " Rs")
 
 def main():
     app = QApplication(sys.argv)
+    app.setOverrideCursor(QtCore.Qt.BlankCursor)
 
     form = MainWindow()
     form.show()
