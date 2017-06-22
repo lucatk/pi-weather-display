@@ -36,6 +36,8 @@ def receive(form):
 
         form.lblTemperature.setText(str(round(data["dht_temperature"], 1)).replace(".", ",") + "﻿°C")
         form.lblHumidity.setText("Feuchtigkeit: " + str(round(data["dht_humidity"], 1)).replace(".", ",") + "%")
+        form.lblLightLevel.setText("Es ist " + str(round(data["mcp_light_voltage"])) + "% hell draußen.")
+        form.lblSmokeLevel.setText("Smoke level: " + str(data["mcp_smoke_voltage"]))
 
         socket.send_string("")
 
