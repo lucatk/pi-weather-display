@@ -34,8 +34,8 @@ def receive(form):
         msg = socket.recv_json()
         data = json.loads(msg)
 
-        form.lblTemperature.setText(str(round(data["dht_temperature"], 1)) + "﻿°C")
-        form.lblHumidity.setText("Feuchtigkeit: " + round(data["dht_humidity"], 1) + "%")
+        form.lblTemperature.setText(str(round(data["dht_temperature"], 1)).replace(".", ",") + "﻿°C")
+        form.lblHumidity.setText("Feuchtigkeit: " + str(round(data["dht_humidity"], 1)).replace(".", ",") + "%")
 
         socket.send_string("")
 
