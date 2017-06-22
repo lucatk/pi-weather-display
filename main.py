@@ -51,7 +51,7 @@ class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
         self.lblHumidity.mousePressEvent = self.changeMCPMode
         self.lblLightLevel.mousePressEvent = self.changeMCPMode
         self.lblSmokeLevel.mousePressEvent = self.changeMCPMode
-        self.lblTime.mousePressEvent = self.changeTimeMode
+        self.lblTime.mousePressEvent = self.changeClockMode
 
         bgPalette = self.centralWidget.palette()
         bgPalette.setColor(self.centralWidget.backgroundRole(), QtCore.Qt.black)
