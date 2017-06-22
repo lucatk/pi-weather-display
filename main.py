@@ -18,13 +18,13 @@ class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
     mode_temp = 0
     mode_clock = 0
 
-    def changeTempMode(self):
+    def changeTempMode(self, event):
         if self.mode_temp > 2:
             self.mode_temp = 0
         else:
             self.mode_temp = self.mode_temp+1
 
-    def changeMCPMode(self):
+    def changeMCPMode(self, event):
         if self.mode_temp == 0:
             self.mode_temp = 1
         elif self.mode_temp == 1:
@@ -34,7 +34,7 @@ class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
         elif self.mode_temp == 3:
             self.mode_temp = 2
 
-    def changeClockMode(self):
+    def changeClockMode(self, event):
         if self.mode_temp == 0:
             self.mode_temp = 1
         else:
@@ -47,11 +47,11 @@ class MainWindow(QMainWindow, mainwindow_auto.Ui_MainWindow):
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.showFullScreen()
 
-        self.lblTemperature.clicked.connect(lambda: self.changeTempMode())
-        self.lblHumidity.clicked.connect(lambda: self.changeMCPMode())
-        self.lblLightLevel.clicked.connect(lambda: self.changeMCPMode())
-        self.lblSmokeLevel.clicked.connect(lambda: self.changeMCPMode())
-        self.lblTime.clicked.connect(lambda: self.changeTimeMode())
+        self.lblTemperature.mousePressEvent = self.changeTempMode
+        self.lblHumidity.mousePressEvent = self.changeMCPMode
+        self.lblLightLevel.mousePressEvent = self.changeMCPMode
+        self.lblSmokeLevel.mousePressEvent = self.changeMCPMode
+        self.lblTime.mousePressEvent = self.changeTimeMode
 
         bgPalette = self.centralWidget.palette()
         bgPalette.setColor(self.centralWidget.backgroundRole(), QtCore.Qt.black)
